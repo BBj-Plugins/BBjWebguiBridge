@@ -1,0 +1,8 @@
+{
+	"name":"BBjWebguiBridge",
+	"description":"This Plugin contains logic to communicate with Webswing applications.",
+	"version":"24.23",
+	"author":"Basis",
+	"dependencies":[]
+}
+

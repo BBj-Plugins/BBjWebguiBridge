@@ -1,0 +1,25 @@
+use cloud.basis.interfaces.WebguiListenerIF
+use cloud.basis.interfaces.WebguiObjectIF
+
+use com.google.gson.JsonObject
+
+use cloud.basis.WebguiEvent
+
+use com.google.gson.Gson
+
+class public BBjWebguiDefaultListener implements WebguiListenerIF
+    method public void onEventTriggered(WebguiObjectIF@ webguiObject!)
+      event! = CAST(WebguiEvent@, webguiObject!)
+      actionName! = event!.getActionName()
+
+      gson! = new Gson()
+      objectPayload! = webguiObject!.getPayload()
+      payload! = gson!.fromJson(objectPayload!, JsonObject.class)
+
+      BBjAPI().postPriorityCustomEvent(str(actionName!), payload!)
+  methodend
+
+  method public void onEventTriggered(WebguiObjectIF webguiObject!)
+    rem Workaround to get this initialized properly
+  methodend
+classend

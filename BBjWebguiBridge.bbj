@@ -1,0 +1,37 @@
+use cloud.basis.WebguiBridge
+use java.util.HashMap
+
+use ::BBjWebguiBridge/listeners/BBjWebguiDefaultListener.bbj::BBjWebguiDefaultListener
+
+class public BBjWebguiBridge
+    field private HashMap listenerMap! = new HashMap()
+    field private WebguiBridge@ bridge!
+
+    method public BBjWebguiBridge()
+        bridge! = new WebguiBridge@()
+        #bridge! = CAST(WebguiBridge@, bridge!)
+    methodend
+
+    method public void setCallback(BBjString callbackLabel$, CustomObject instance!, BBjString methodName$) 
+        listener! = new BBjWebguiDefaultListener()
+        #bridge!.addActionEventListener(listener!)
+        #listenerMap!.put(p_eventType!, listener!)
+        BBjAPI().setCustomEventCallback(str(#this!)+callbackLabel$, instance!, methodName$)
+    methodend
+
+    method public void setCallback(String callbackLabel$, String methodName$) 
+        listener! = new BBjWebguiDefaultListener()
+        #bridge!.addActionEventListener(listener!)
+        #listenerMap!.put(p_eventType!, listener!)
+        BBjAPI().setCustomEventCallback(str(#this!)+callbackLabel$, methodName$)
+    methodend
+
+    method public void removeCallback(BBjString callbackLabel$)
+        #bridge!.removeActionEventListener(#listenerMap!.get(callbackLabel$))
+        BBjAPI().clearCustomEventCallback(callbackLabel$)
+    methodend
+
+    method public void postCustomEvent(BBjString eventName!, String payload!)
+        #bridge!.sendActionEvent(str(#this!)+str(eventName!), payload!)
+    methodend
+classend
