@@ -15,15 +15,15 @@ class public BBjWebguiBridge
     method public void setCallback(BBjString callbackLabel$, CustomObject instance!, BBjString methodName$) 
         listener! = new BBjWebguiDefaultListener()
         #bridge!.addActionEventListener(listener!)
-        #listenerMap!.put(p_eventType!, listener!)
-        BBjAPI().setCustomEventCallback(str(#this!)+callbackLabel$, instance!, methodName$)
+        #listenerMap!.put(callbackLabel$, listener!)
+        BBjAPI().setCustomEventCallback(callbackLabel$, instance!, methodName$)
     methodend
 
-    method public void setCallback(String callbackLabel$, String methodName$) 
+    method public void setCallback(BBjString callbackLabel$, BBjString methodName$) 
         listener! = new BBjWebguiDefaultListener()
         #bridge!.addActionEventListener(listener!)
-        #listenerMap!.put(p_eventType!, listener!)
-        BBjAPI().setCustomEventCallback(str(#this!)+callbackLabel$, methodName$)
+        #listenerMap!.put(callbackLabel$, listener!)
+        BBjAPI().setCustomEventCallback(callbackLabel$, methodName$)
     methodend
 
     method public void removeCallback(BBjString callbackLabel$)
@@ -32,6 +32,6 @@ class public BBjWebguiBridge
     methodend
 
     method public void postCustomEvent(BBjString eventName!, String payload!)
-        #bridge!.sendActionEvent(str(#this!)+str(eventName!), payload!)
+        #bridge!.sendActionEvent(str(eventName!), payload!)
     methodend
 classend
