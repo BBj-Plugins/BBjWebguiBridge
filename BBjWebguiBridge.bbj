@@ -4,30 +4,24 @@ use java.util.HashMap
 use ::BBjWebguiBridge/listeners/BBjWebguiDefaultListener.bbj::BBjWebguiDefaultListener
 
 class public BBjWebguiBridge
-    field private HashMap listenerMap! = new HashMap()
     field private WebguiBridge@ bridge!
 
     method public BBjWebguiBridge()
         bridge! = new WebguiBridge@()
         #bridge! = CAST(WebguiBridge@, bridge!)
+        listener! = new BBjWebguiDefaultListener()
+        #bridge!.addActionEventListener(listener!)
     methodend
 
     method public void setCallback(BBjString callbackLabel$, CustomObject instance!, BBjString methodName$) 
-        listener! = new BBjWebguiDefaultListener()
-        #bridge!.addActionEventListener(listener!)
-        #listenerMap!.put(callbackLabel$, listener!)
         BBjAPI().setCustomEventCallback(callbackLabel$, instance!, methodName$)
     methodend
 
     method public void setCallback(BBjString callbackLabel$, BBjString methodName$) 
-        listener! = new BBjWebguiDefaultListener()
-        #bridge!.addActionEventListener(listener!)
-        #listenerMap!.put(callbackLabel$, listener!)
         BBjAPI().setCustomEventCallback(callbackLabel$, methodName$)
     methodend
 
     method public void removeCallback(BBjString callbackLabel$)
-        #bridge!.removeActionEventListener(#listenerMap!.get(callbackLabel$))
         BBjAPI().clearCustomEventCallback(callbackLabel$)
     methodend
 
