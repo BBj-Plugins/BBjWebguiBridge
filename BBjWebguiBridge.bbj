@@ -1,5 +1,6 @@
 use cloud.basis.WebguiBridge
 use java.util.HashMap
+use com.google.gson.JsonObject
 
 use ::BBjWebguiBridge/listeners/BBjWebguiDefaultListener.bbj::BBjWebguiDefaultListener
 
@@ -25,7 +26,11 @@ class public BBjWebguiBridge
         BBjAPI().clearCustomEventCallback(callbackLabel$)
     methodend
 
-    method public void postCustomEvent(BBjString eventName!, String payload!)
-        #bridge!.sendActionEvent(str(eventName!), payload!)
+    method public void postCustomEvent(BBjString eventName!, JsonObject payload!)
+        #bridge!.sendActionEvent(eventName!, payload!)
+    methodend
+
+    method public void postCustomEvent(BBjString eventName!)
+        #bridge!.sendActionEvent(eventName!, new JsonObject@())
     methodend
 classend
