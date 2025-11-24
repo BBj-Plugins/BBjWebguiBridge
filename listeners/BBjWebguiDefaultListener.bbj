@@ -12,11 +12,7 @@ class public BBjWebguiDefaultListener implements WebguiListenerIF
       event! = CAST(WebguiEvent@, webguiObject!)
       actionName! = event!.getActionName()
 
-      gson! = new Gson()
-      objectPayload! = webguiObject!.getPayload()
-      payload! = gson!.fromJson(objectPayload!, JsonObject.class)
-
-      BBjAPI().postPriorityCustomEvent(str(actionName!), payload!)
+      BBjAPI().postPriorityCustomEvent(str(actionName!), webguiObject!.getPayload())
   methodend
 
   method public void onEventTriggered(WebguiObjectIF webguiObject!)
