@@ -18,7 +18,7 @@ class public BBjWebguiBridge
     methodend
 
     rem /**
-    REM  * Method to register a callback with a class instance
+    REM  * Registers a callback with a class instance
     REM  * BBjString callbackLabel$
     REM  * @param CustomObject instance!
     REM  * @param BBjString methodName$
@@ -28,7 +28,7 @@ class public BBjWebguiBridge
     methodend
 
     rem /**
-    REM  * Method to register a method to run when callback is triggered
+    REM  * Registers a method to run when callback is triggered
     REM  * @param BBjString callbackLabel$
     REM  * @param BBjString methodName$
     rem  */
@@ -45,7 +45,7 @@ class public BBjWebguiBridge
     methodend
 
     rem /**
-    REM  * Method to send Event including Data to the Webgui Bridge
+    REM  * Method to send Event including Data to the WebguiBridge
     REM  * @param BBjString eventName!
     REM  * @param JsonObject@ payload!
     rem  */
@@ -54,7 +54,7 @@ class public BBjWebguiBridge
     methodend
 
     rem /**
-    REM  * Method to send an Event to the Webgui Bridge
+    REM  * Method to send an Event to the WebguiBridge
     REM  * @param BBjString eventName!
     rem  */
     method public void postCustomEvent(BBjString eventName!)

@@ -8,11 +8,11 @@ use cloud.basis.WebguiEvent
 use com.google.gson.Gson
 
 rem /**
-REM  * Default Implementation of the WebguiListenerIF to handle Events from the Webgui Bridge
+REM  * Default Implementation of the WebguiListenerIF to handle Events from the WebguiBridge
 rem  */
 class public BBjWebguiDefaultListener implements WebguiListenerIF
     rem /**
-	REM  * Method to handle Events from the Webgui Bridge
+	REM  * Method to handle Events from the WebguiBridge
     REM  * @param WebguiObjectIF@ webguiObject!
     REM  */
 	method public void onEventTriggered(WebguiObjectIF@ webguiObject!)

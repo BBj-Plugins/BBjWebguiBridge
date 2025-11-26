@@ -74,7 +74,7 @@ This class implements `WebguiListenerIF` and handles incoming events from the We
 
 #### onEventTriggered(WebguiObjectIF@ webguiObject!)
 
-Handles events triggered by the Webgui Bridge.
+Handles events triggered by the WebguiBridge.
 
 **Parameters:**
 - `webguiObject!`: `WebguiObjectIF@` object containing the event data
