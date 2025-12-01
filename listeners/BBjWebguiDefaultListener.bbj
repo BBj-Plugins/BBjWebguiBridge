@@ -7,15 +7,26 @@ use cloud.basis.WebguiEvent
 
 use com.google.gson.Gson
 
+rem /**
+REM  * Default Implementation of the WebguiListenerIF to handle Events from the WebguiBridge
+rem  */
 class public BBjWebguiDefaultListener implements WebguiListenerIF
-    method public void onEventTriggered(WebguiObjectIF@ webguiObject!)
-      event! = CAST(WebguiEvent@, webguiObject!)
-      actionName! = event!.getActionName()
+    rem /**
+	REM  * Method to handle Events from the WebguiBridge
+    REM  * @param WebguiObjectIF@ webguiObject!
+    REM  */
+	method public void onEventTriggered(WebguiObjectIF@ webguiObject!)
+		event! = CAST(WebguiEvent@, webguiObject!)
+		actionName! = event!.getActionName()
 
-      BBjAPI().postPriorityCustomEvent(str(actionName!), webguiObject!.getPayload())
-  methodend
+		BBjAPI().postPriorityCustomEvent(str(actionName!), webguiObject!.getPayload())
+	methodend
 
-  method public void onEventTriggered(WebguiObjectIF webguiObject!)
-    rem Workaround to get this initialized properly
-  methodend
+	rem /**
+	REM  * Method to trick the compiler to accept this class as valid implementation
+	REM  * @param WebguiObjectIF webguiObject!
+	REM  */
+	method public void onEventTriggered(WebguiObjectIF webguiObject!)
+		rem Workaround to get this initialized properly
+	methodend
 classend

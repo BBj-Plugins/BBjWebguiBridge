@@ -4,6 +4,9 @@ use com.google.gson.JsonObject
 
 use ::BBjWebguiBridge/listeners/BBjWebguiDefaultListener.bbj::BBjWebguiDefaultListener
 
+rem REM /**
+REM  * BBj Wrapper Class to establish a connection Between the WebguiBridge and BBj Code
+REM  */
 class public BBjWebguiBridge
     field private WebguiBridge@ bridge!
 
@@ -14,22 +17,46 @@ class public BBjWebguiBridge
         #bridge!.addActionEventListener(listener!)
     methodend
 
+    rem /**
+    REM  * Registers a callback with a class instance
+    REM  * BBjString callbackLabel$
+    REM  * @param CustomObject instance!
+    REM  * @param BBjString methodName$
+    rem  */
     method public void setCallback(BBjString callbackLabel$, CustomObject instance!, BBjString methodName$) 
         BBjAPI().setCustomEventCallback(callbackLabel$, instance!, methodName$)
     methodend
 
+    rem /**
+    REM  * Registers a method to run when callback is triggered
+    REM  * @param BBjString callbackLabel$
+    REM  * @param BBjString methodName$
+    rem  */
     method public void setCallback(BBjString callbackLabel$, BBjString methodName$) 
         BBjAPI().setCustomEventCallback(callbackLabel$, methodName$)
     methodend
 
+    rem /**
+    REM  * Method to remove a callback
+    REM  * @param BBjString callbackLabel$
+    rem  */
     method public void removeCallback(BBjString callbackLabel$)
         BBjAPI().clearCustomEventCallback(callbackLabel$)
     methodend
 
+    rem /**
+    REM  * Method to send Event including Data to the WebguiBridge
+    REM  * @param BBjString eventName!
+    REM  * @param JsonObject@ payload!
+    rem  */
     method public void postCustomEvent(BBjString eventName!, JsonObject@ payload!)
         #bridge!.sendActionEvent(eventName!, payload!)
     methodend
 
+    rem /**
+    REM  * Method to send an Event to the WebguiBridge
+    REM  * @param BBjString eventName!
+    rem  */
     method public void postCustomEvent(BBjString eventName!)
         #bridge!.sendActionEvent(eventName!, new JsonObject@())
     methodend
